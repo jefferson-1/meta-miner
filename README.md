@@ -67,6 +67,49 @@ Check https://github.com/xmrig/xmrig-proxy/blob/master/doc/STRATUM_EXT.md#14-alg
 }
 ```
 
+## Sample mm.json (to use with xmr-stak v2.5.1+ located in the same directory)
+
+* Instructions
+   * Edit config.txt and set verbosity to 4 and httpd_port to 8080 or any other unused port.
+   * Set miner_port to be the same as what is in config.txt
+   * Set user to your monero wallet address
+   * Set pass to rig:email address (example: 001:myemail@mydomain.com)
+   * Be sure to edit cpu.txt and amd.txt as needed. These files can be copied and updated for optimization on each currency.
+   * Nvidia users can use --nvidia nvidia.txt
+   
+```
+{
+ "miner_host": "127.0.0.1",
+ "miner_port": 8080,
+ "pools": [
+  "gulf.moneroocean.stream:10001"
+ ],
+ "algos": {
+  "cn-lite/1": "./xmr-stak --currency aeon7 --cpu cpu.txt --amd amd.txt",
+  "cn/1": "./xmr-stak --currency graft --cpu cpu.txt --amd amd.txt",
+  "cn-heavy/0": "./xmr-stak --currency cryptonight_heavy --cpu cpu.txt --amd amd.txt",
+  "cn/msr": "./xmr-stak --currency cryptonight_masari --cpu cpu.txt --amd amd.txt",
+  "cn/2": "./xmr-stak --currency cryptonight_v8 --cpu cpu.txt --amd amd.txt",
+  "cn-heavy/tube": "./xmr-stak --currency bittube --cpu cpu.txt --amd amd.txt",
+  "cn-heavy/xhv": "./xmr-stak --currency haven --cpu cpu.txt --amd amd.txt",
+  "cn/xtl": "./xmr-stak --currency stellite --cpu cpu.txt --amd amd.txt"
+ },
+ "algo_perf": {
+  "cn": 30.2,
+  "cn/2": 38,
+  "cn/msr": 57.6,
+  "cn-lite": 109.1,
+  "cn-heavy": 27
+ },
+ "algo_min_time": 0,
+ "user": "44qJYxdbuqSKarYnDSXB6KLbsH4yR65vpJe3ELLDii9i4ZgKpgQXZYR4AMJxBJbfbKZGWUxZU42QyZSsP4AyZZMbJBCrWr1",
+ "pass": "x",
+ "log_file": null,
+ "watchdog": 600,
+ "hashrate_watchdog": 0
+}
+```
+
 ## General configuration guidelines
 
 * Configure your miners to connect to the single localhost:3333 (non SSL/TLS) pool.
@@ -139,6 +182,7 @@ mm.exe -p=gulf.moneroocean.stream:10001 --cn/1="xmr-stak.exe --noCPU --currency 
 ```shell
 mm.exe -p=gulf.moneroocean.stream:10001 --cn/1="xmr-stak.exe --currency cryptonight_v7 --cpu cpu.txt --amd amd.txt" --cn/msr="xmr-stak.exe --currency cryptonight_masari --cpu cpu.txt --amd amd.txt" --cn-lite/1="xmr-stak.exe --currency cryptonight_lite_v7 --cpu cpu-lite.txt --amd amd-lite.txt" --cn-heavy/0="xmr-stak.exe --currency cryptonight_heavy --cpu cpu-heavy.txt --amd amd-heavy.txt" --cn-heavy/xhv="xmr-stak.exe --currency cryptonight_haven --cpu cpu-heavy.txt --amd amd-heavy.txt" --cn-heavy/tube="xmr-stak.exe --currency cryptonight_bittube2 --cpu cpu-heavy.txt --amd amd-heavy.txt"
 ```
+
 
 ## Usage examples on Linux (Ubuntu 16.04)
 
