@@ -71,16 +71,16 @@ Check https://github.com/xmrig/xmrig-proxy/blob/master/doc/STRATUM_EXT.md#14-alg
 
 * Instructions
    * Edit config.txt and set verbosity to 4 and httpd_port to 8080 or any other unused port.
-   * Set miner_port to be the same as what is in config.txt
    * Set user to your monero wallet address
    * Set pass to rig:email address (example: 001:myemail@mydomain.com)
    * Be sure to edit cpu.txt and amd.txt as needed. These files can be copied and updated for optimization on each currency.
    * Nvidia users can use --nvidia nvidia.txt
+   * If no cpu or nvidia is desired then use --noCPU --noNvidia
    
 ```
 {
  "miner_host": "127.0.0.1",
- "miner_port": 8080,
+ "miner_port": 3333,
  "pools": [
   "gulf.moneroocean.stream:10001"
  ],
